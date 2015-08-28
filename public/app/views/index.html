@@ -24,6 +24,7 @@
 
 	<!-- services -->
 
+	<script src="app/services/authService.js"></script>
 	<script src="app/services/userService.js"></script>
 
 	<!-- main Angular app files -->
@@ -43,7 +44,9 @@
 			<li><a href="/users" ><span class="glyphicon glyphicon-user"></span> Users</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li ><a href="/login">Login</a></li>
+			<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+			<li ng-if="main.loggedIn">{{main.user.username}}</li>
+			<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Log Out</a></li>
 		</ul>
 	</div>
 	</div>
